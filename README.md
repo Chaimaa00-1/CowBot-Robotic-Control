@@ -5,69 +5,120 @@
 CowBot is a robotic control unit developed as part of an engineering
 internship project.
 
-The system provides a Linux-based Human-Machine Interface (HMI)
-for controlling and monitoring a 6-axis collaborative robot.
+The system combines an embedded Linux Human-Machine Interface (HMI),
+an STM32 real-time communication gateway, and CAN communication
+to control and supervise a 6-axis robotic system.
+
+The objective of the project was to design a compact and modular
+control architecture integrating embedded software, industrial
+communication and robot supervision.
+
+---
 
 ## System Architecture
 
-The CowBot control unit is based on a layered architecture combining
-a Linux-based Human-Machine Interface, an STM32 real-time gateway,
-a PLC interface, and CAN communication with the 6-axis robotic system.
+The CowBot architecture combines:
+
+- A Linux-based HMI running on an AIO1101 V3 embedded platform
+- An STM32L431RCT6 microcontroller acting as a real-time gateway
+- UART/JSON communication between the HMI and STM32
+- SPI communication with an MCP2515 CAN controller
+- CAN communication with the 6-axis robotic system
+- An interface for PLC integration
 
 📄 **[View the complete CowBot System Architecture (PDF)](docs/cowbot-architecture.pdf)**
 
+---
+
 ## Human-Machine Interface
 
-The CowBot HMI was developed in Python using Tkinter and deployed
-on an embedded Linux platform.
+The HMI was developed in Python using Tkinter and deployed on
+an embedded Linux platform.
 
-It provides an intuitive interface for controlling and supervising
-the 6-axis robotic system.
-
-### Main HMI Functions
+### Main Functions
 
 - Manual control of the six robot joints
-- Individual joint angle configuration
+- Jog+ and Jog- control
+- Joint angle configuration
 - Save and load robot positions
-- Create and execute motion sequences
-- Start and stop robot operations
+- Create motion sequences
+- Execute saved sequences
+- Start and stop commands
 - Robot state supervision
-- UART/JSON communication with the STM32 controller
 
 <p align="center">
-  <img src="docs/cowbot-hmi.jpeg"
+  <img src="docs/cowbot-hmi.png"
        alt="CowBot Human-Machine Interface"
-       width="850">
+       width="800">
 </p>
+
+---
+
+## Embedded Firmware
+
+The STM32L431RCT6 acts as the communication gateway between
+the Linux HMI and the robotic system.
+
+### Communication Flow
+
+HMI (Python / Tkinter)  
+↓  
+UART / JSON  
+↓  
+STM32L431RCT6  
+↓  
+SPI  
+↓  
+MCP2515  
+↓  
+CAN  
+↓  
+6-Axis Robot
+
+---
 
 ## Technologies
 
+### Embedded Systems
+
 - STM32L431RCT6
-- C / STM32 HAL
-- CAN
+- C
+- STM32 HAL
 - MCP2515
-- UART / JSON
-- Python / Tkinter
-- Ubuntu Linux
+- CAN
+- UART
+- SPI
+
+### Software
+
+- Python
+- Tkinter
+- JSON
 - Git
 
-## Main Features
+### Operating System
 
-- Manual control of the robot joints
-- Robot state monitoring
-- Position saving and loading
-- Motion sequence creation
-- UART communication between the Linux HMI and STM32
-- CAN communication between the STM32 and the robot
+- Ubuntu Linux
+- systemd
+- Automatic application startup
+- Software watchdog
 
-## Repository Structure
+---
 
-- `firmware/` – STM32 firmware
-- `hmi/` – Python/Tkinter Human-Machine Interface
-- `docs/` – Architecture and technical documentation
+## Project Structure
 
-## Author
-
-**Chaimaa Harras**  
-Electrical Engineering & Embedded Systems  
-ENSA Khouribga
+```text
+CowBot-Robotic-Control/
+│
+├── README.md
+│
+├── docs/
+│   ├── README.md
+│   ├── cowbot-architecture.pdf
+│   └── cowbot-hmi.png
+│
+├── firmware/
+│   └── README.md
+│
+└── hmi/
+    └── README.md
