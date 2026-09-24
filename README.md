@@ -14,8 +14,7 @@ The CowBot control unit is based on a layered architecture combining
 a Linux-based Human-Machine Interface, an STM32 real-time gateway,
 and CAN communication with the robotic system.
 
-![CowBot System Architecture](docs/cowbot-system-architecture.png)
-
+📄 [View the CowBot System Architecture (PDF)](docs/cowbot-architecture.pdf)
 
 ## Technologies
 
