@@ -10,13 +10,12 @@ for controlling and monitoring a 6-axis collaborative robot.
 
 ## System Architecture
 
-Linux HMI  
-↓ UART / JSON  
-STM32L431RCT6  
-↓ SPI  
-MCP2515  
-↓ CAN  
-6-Axis Robot
+The CowBot control unit is based on a layered architecture combining
+a Linux-based Human-Machine Interface, an STM32 real-time gateway,
+and CAN communication with the robotic system.
+
+![CowBot System Architecture](docs/cowbot-system-architecture.png)
+
 
 ## Technologies
 
