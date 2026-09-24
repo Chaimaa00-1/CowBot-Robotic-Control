@@ -88,7 +88,7 @@ The system was configured for autonomous operation with:
 A preview of the graphical interface is available in the project
 documentation.
 
-![CowBot HMI](../docs/cowbot-hmi.png)
+![CowBot HMI](../docs/cowbot-hmi.jpeg)
 
 ## Note
 
