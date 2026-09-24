@@ -15,6 +15,31 @@ a Linux-based Human-Machine Interface, an STM32 real-time gateway,
 a PLC interface, and CAN communication with the 6-axis robotic system.
 
 📄 **[View the complete CowBot System Architecture (PDF)](docs/cowbot-architecture.pdf)**
+
+## Human-Machine Interface
+
+The CowBot HMI was developed in Python using Tkinter and deployed
+on an embedded Linux platform.
+
+It provides an intuitive interface for controlling and supervising
+the 6-axis robotic system.
+
+### Main HMI Functions
+
+- Manual control of the six robot joints
+- Individual joint angle configuration
+- Save and load robot positions
+- Create and execute motion sequences
+- Start and stop robot operations
+- Robot state supervision
+- UART/JSON communication with the STM32 controller
+
+<p align="center">
+  <img src="docs/cowbot-hmi.jpeg"
+       alt="CowBot Human-Machine Interface"
+       width="850">
+</p>
+
 ## Technologies
 
 - STM32L431RCT6
